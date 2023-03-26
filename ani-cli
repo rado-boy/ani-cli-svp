@@ -333,7 +333,7 @@ while [ $# -gt 0 ]; do
 		;;
 	--dub) mode="dub" ;;
 	-U | --update) update_script ;;
-	--svp) extra_args="--unput-ipc-server=/tmp/mpvsocket --no-tydl"
+	--svp) extra_args="--unput-ipc-server=/tmp/mpvsocket --no-tydl" ;;
 	*) query="$(printf "%s" "$query $1" | sed "s|^ ||;s| |+|g")" ;;
 	esac
 	shift
