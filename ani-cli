@@ -335,8 +335,10 @@ while [ $# -gt 0 ]; do
 	--dub) mode="dub" ;;
 	-U | --update) update_script ;;
 	--svp)
+		locate -V >/dev/null 2>&1 || die "Running 'locate' command failed - please install a package that provides it like mlocate"
+		svp_manager=$(locate svp4/SVPManager) || die "Could not find SVP Manager on your system"
 		pidof SVPManager >/dev/null 2>&1 || die "SVP Control Panel not running!"
-		player_function=$(locate svp4/SVPManager)
+		player_function=$svp_manager
 		;;
 	*) query="$(printf "%s" "$query $1" | sed "s|^ ||;s| |+|g")" ;;
 	esac
